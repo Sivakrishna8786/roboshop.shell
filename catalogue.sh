@@ -27,17 +27,17 @@ VALIDATE(){
     fi 
 }
 
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 
 VALIDATE $? "starting up rpm" 
 
-yum install nodejs -y &>> $LOGFILE
+yum install nodejs -y &>>$LOGFILE
 
 VALIDATE $? "Installation of nodejs"
 
-useradd roboshop &>> $LOGFILE
+useradd roboshop &>>$LOGFILE
 
-mkdir /app &>> $LOGFILE
+mkdir /app &>>$LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip 
 
@@ -45,27 +45,27 @@ VALIDATE $? "downloading catalogue"
 
 cd /app   
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip /tmp/catalogue.zip &>>$LOGFILE
 
 cd /app
 
-npm install  &>> $LOGFILE
+npm install  &>>$LOGFILE
 
 VALIDATE $? "Installation of npm"
 
-cp /home/centos/roboshop-shell/catalogue.services /etc/systemd/system/catalogue.service &>> $LOGFILE
+cp /home/centos/roboshop-shell/catalogue.services /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copying catalogue services"
 
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "daemon reload"
 
-systemctl enable catalogue &>> $LOGFILE
+systemctl enable catalogue &>>$LOGFILE
 
 VALIDATE $? "enable catalogue"
 
-systemctl start catalogue &>> $LOGFILE
+systemctl start catalogue &>>$LOGFILE
 
 VALIDATE $? "start catalogue"
 
