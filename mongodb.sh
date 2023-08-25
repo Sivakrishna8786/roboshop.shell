@@ -21,13 +21,15 @@ VALIDATE(){
     if [ $1 -ne 0 ];
     then 
         echo -e "$2 ... $R FAILURE $N"
+        exit 1 
+    else
         echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
-VALIDATE $? "copied mongo repo into yum.repos.d"
+VALIDATE $? "Copied Mongo repo into yum.repos.d"
 
 yum install mongodb.org -y &>> $LOGFILE
 
@@ -47,4 +49,4 @@ VALIDATE $? "Edited Mongodb conf"
 
 systemctl restart mongod &>> $LOGFILE
 
-VALIDATE $? "restating Mongodb"
+VALIDATE $? "restating Mongod"
