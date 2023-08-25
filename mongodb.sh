@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DATE=$(date +%F:%H:%M:%S)
+DATE=$(date +%F)
 LOGSDIR=/tmp
 SCRIPT_NAME=$0
-LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
+LOGFILE=$LOGSDIR/$0-$DATE.log
 USERID=$(id -u)
 
 R="\e[31m"
-G="\e[32m"
+G="\e[32m" 
 Y="\e[33m"
 N="\e[0"
 
@@ -27,7 +27,7 @@ VALIDATE(){
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
-VALIDATE $? "copied mongo repo into yum.repo.c"
+VALIDATE $? "copied mongo repo into yum.repos.d"
 
 yum install mongodb.org -y &>> $LOGFILE
 
@@ -47,4 +47,4 @@ VALIDATE $? "Edited Mongodb conf"
 
 systemctl restart mongod &>> $LOGFILE
 
-VALIDATE $? "restating"
+VALIDATE $? "restating Mongodb"
