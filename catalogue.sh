@@ -39,7 +39,7 @@ useradd roboshop &>>$LOGFILE
 
 mkdir /app &>>$LOGFILE
 
-curl -o /tmp/frontend.zip https://roboshop-builds.s3.amazonaws.com/frontend.zip &>>$LOGFILE
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "downloading catalogue artifact"
 
@@ -47,7 +47,7 @@ cd /app
 
 VALIDATE $? "moving into app directory"
 
-unzip /tmp/frontend.zip &>>$LOGFILE
+unzip /tmp/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "unzipping catalogue"
 
