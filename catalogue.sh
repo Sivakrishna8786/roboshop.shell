@@ -57,7 +57,7 @@ npm install  &>>$LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-cp /home/centos/roboshop-shell/catalogue.services /etc/systemd/system/catalogue.service &>>$LOGFILE
+cp C:\devopslearn\draw.io\repos\roboshop-shell\catalogue.services /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copying catalogue services"
 
