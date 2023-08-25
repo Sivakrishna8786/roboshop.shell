@@ -9,7 +9,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-if [ $ID -ne 0 ]
+if [ $USERID -ne 0 ];
 then 
   echo -e "$R ERROR:: Start installation from root user $N"
   exit 1
@@ -17,7 +17,7 @@ fi
 
 VALIDATE(){
 
-if [ $1 -ne 0 ]
+if [ $1 -ne 0 ];
 then 
    echo -e "$2 ... $R FAILURE $N"
    exit 1
@@ -59,7 +59,6 @@ systemctl daemon-reload &>> $LOGFILE
 
 VALIDATE $? "daemon reload"
 
-
 systemctl enable catalogue &>> $LOGFILE
 
 VALIDATE $? "enable catalogue"
@@ -67,7 +66,6 @@ VALIDATE $? "enable catalogue"
 systemctl start catalogue &>> $LOGFILE
 
 VALIDATE $? "start catalogue"
-
 
 cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
