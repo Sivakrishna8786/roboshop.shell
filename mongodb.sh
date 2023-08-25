@@ -20,7 +20,7 @@ VALIDATE(){
     if [ $1 -ne 0 ];
     then 
         echo -e "$2 ... $R FAILURE $N"
-        echo -e "$2 ... $Y SUCCESS $N"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
@@ -30,7 +30,7 @@ VALIDATE $? "copied mongo repo into yum.repo.c"
 
 yum install mongodb-org -y &>> $LOGFILE
 
-VALIDATE $? "Installation og Mongodb"
+VALIDATE $? "Installation Mongodb"
 
 systemctl enable mongod &>> $LOGFILE
 
@@ -42,7 +42,7 @@ VALIDATE $? "Starting MongoDB"
 
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 
-VALIDATE $? "Edidted mongod.conf"
+VALIDATE $? "Edited mongod.conf"
 
 systemctl restart mongod &>> $LOGFILE
 
