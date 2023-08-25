@@ -15,11 +15,10 @@ N="\e[0m"
    then 
   echo -e "$R ERROR:: Start installation from root user $N"
   exit 1
-   fi
+    fi
 
 VALIDATE(){
-
-   if [ $1 -ne 0 ];
+    if [ $1 -ne 0 ];
     then 
    echo -e "$2 ... $R FAILURE $N"
    exit 1
@@ -52,7 +51,6 @@ npm install  &>> $LOGFILE
 
 VALIDATE $? "Installation of npm"
 
- 
 cp /home/centos/roboshop-shell/catalogue.services /etc/systemd/system/catalogue.service &>> $LOGFILE
 
 VALIDATE $? "copying catalogue services"
