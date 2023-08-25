@@ -4,26 +4,28 @@ DATE=$(date +%F)
 LOGSDIR=/tmp
 SCRIPT_NAME=$0
 LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
-USERID=(id -u)
+USERID=$(id -u)
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-if [ $USERID -ne 0 ];
-then 
+
+   if [ $USERID -ne 0 ];
+   then 
   echo -e "$R ERROR:: Start installation from root user $N"
   exit 1
-fi
+   fi
 
 VALIDATE(){
 
-if [ $1 -ne 0 ];
-then 
+   if [ $1 -ne 0 ];
+    then 
    echo -e "$2 ... $R FAILURE $N"
    exit 1
-else
+    else
    echo -e "$2 ... $G SUCCESS $N"
-fi 
+    fi 
 }
 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
