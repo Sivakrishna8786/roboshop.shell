@@ -47,6 +47,8 @@ cd /app
 
 unzip /tmp/catalogue.zip &>> $LOGFILE
 
+cd /app
+
 npm install  &>> $LOGFILE
 
 VALIDATE $? "Installation of npm"
