@@ -5,6 +5,7 @@ LOGSDIR=/tmp
 SCRIPT_NAME=$0
 LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
 USERID=$(id -u)
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -30,7 +31,7 @@ VALIDATE $? "copied mongo repo into yum.repo.c"
 
 yum install mongodb.org -y &>> $LOGFILE
 
-VALIDATE $? "Installation Mongodb"
+VALIDATE $? "Installing of Mongodb"
 
 systemctl enable mongod &>> $LOGFILE
 
