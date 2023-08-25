@@ -35,18 +35,7 @@ yum install nodejs -y &>> $LOGFILE
 
 VALIDATE $? "Installation of nodejs"
 
-
 useradd roboshop &>> $LOGFILE
-if [ $1 -ne 0 ];
-then 
-   echo -e "$2 ... $R USER already exists $N"
-   exit 1
-else 
-   echo -e "$2 ... $G add user $N"
-fi
-
-VALIDATE $? "User adding"
-
 
 mkdir /app &>> $LOGFILE
 
