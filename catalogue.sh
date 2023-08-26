@@ -60,7 +60,7 @@ npm install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
 # give full path of catalogue.service because we are inside /app
-cp \c\devopslearn\draw.io\repos\roboshop-shell /etc/systemd/system/catalogue.service &>>$LOGFILE
+cp \\c\\devopslearn\\draw.io\\repos\\roboshop-shell\\ /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copying catalogue.service"
 
