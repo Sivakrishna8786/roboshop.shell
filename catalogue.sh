@@ -43,7 +43,7 @@ useradd roboshop &>>$LOGFILE
 #write a condition to check directory already exist or not
 mkdir /app &>>$LOGFILE
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>$LOGFILE
 
 VALIDATE $? "downloading catalogue artifact"
 
@@ -51,7 +51,7 @@ cd /app &>>$LOGFILE
 
 VALIDATE $? "Moving into app directory"
 
-unzip /tmp/catalogue.zip &>>$LOGFILE
+unzip /tmp/frontend.zip &>>$LOGFILE
 
 VALIDATE $? "unzipping catalogue"
 
