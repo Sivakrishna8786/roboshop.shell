@@ -60,7 +60,7 @@ npm install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
 # give full path of catalogue.service because we are inside /app
-cp C:\devopslearn\draw.io\repos\roboshop-shell\catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
+cp \\C:\\devopslearn\\draw.io\\repos\\roboshop-shell\\catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copying catalogue.service"
 
@@ -76,7 +76,7 @@ systemctl start catalogue &>>$LOGFILE
 
 VALIDATE $? "Starting Catalogue"
 
-cp C:\\devopslearn\\draw.io\\repos\\roboshop-shell /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+cp \\C:\\devopslearn\\draw.io\\repos\\roboshop-shell /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 
 VALIDATE $? "Copying mongo repo"
 
@@ -84,6 +84,6 @@ yum install mongodb-org-shell -y &>>$LOGFILE
 
 VALIDATE $? "Installing mongo client"
 
-mongo --host mongodb.joindevops.online </app/schema/catalogue.js &>>$LOGFILE
+mongo --host mongodb.devopslearning.online </app/schema/catalogue.js &>>$LOGFILE
 
 VALIDATE $? "loading catalogue data into mongodb"
