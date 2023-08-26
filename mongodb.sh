@@ -1,51 +1,51 @@
-#!/bin/bash
-
 DATE=$(date +%F)
 LOGSDIR=/tmp
+# /home/centos/shellscript-logs/script-name-date.log
 SCRIPT_NAME=$0
 LOGFILE=$LOGSDIR/$0-$DATE.log
 USERID=$(id -u)
 R="\e[31m"
-G="\e[32m" 
+G="\e[32m"
+N="\e[0m"
 Y="\e[33m"
-N="\e[0"
 
 if [ $USERID -ne 0 ];
-then 
-   echo -e "$R ERROR:: please run this script with root access $N"
-   exit 1
+then
+    echo -e "$R ERROR:: Please run this script with root access $N"
+    exit 1
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ];
-    then 
+    then
         echo -e "$2 ... $R FAILURE $N"
-        exit 1 
+        exit 1
     else
         echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 
-VALIDATE $? "Copied Mongod repo into yum.repos.d"
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
-yum install mongodb-org -y &>>$LOGFILE
+VALIDATE $? "Copied MongoDB repo into yum.repos.d"
 
-VALIDATE $? "Installing of Mongodb"
+yum install mongodb-org -y &>> $LOGFILE
 
-systemctl enable mongod &>>$LOGFILE
+VALIDATE $? "Installation of MongoDB"
+
+systemctl enable mongod &>> $LOGFILE
 
 VALIDATE $? "Enabling MongoDB"
 
-systemctl start mongod &>>$LOGFILE
+systemctl start mongod &>> $LOGFILE
 
 VALIDATE $? "Starting MongoDB"
 
-sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>$LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 
-VALIDATE $? "Edited Mongodb conf"
+VALIDATE $? "Edited MongoDB conf"
 
-systemctl restart mongod &>>$LOGFILE
+systemctl restart mongod &>> $LOGFILE
 
-VALIDATE $? "restating Mongod"
+VALIDATE $? "Restarting MonogoDB"
