@@ -51,8 +51,6 @@ cd /app &>>$LOGFILE
 
 VALIDATE $? "Moving into app directory"
 
-cd /usr/share/nginx/html
-
 unzip /tmp/frontend.zip &>>$LOGFILE
 
 VALIDATE $? "unzipping catalogue"
