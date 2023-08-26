@@ -60,13 +60,13 @@ npm install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
 # give full path of catalogue.service because we are inside /app
-cp C:\devopslearn\draw.io\repos\roboshop-shell\catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
+cp \\C:\\devopslearn\\draw.io\\repos\\roboshop-shell\\catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copying catalogue.service"
 
 systemctl daemon-reload &>>$LOGFILE
 
-VALIDATE $? "daemon reload"
+VALIDATE $? "daemon reload"  
 
 systemctl enable catalogue &>>$LOGFILE
 
