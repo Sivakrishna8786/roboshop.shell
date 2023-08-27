@@ -59,6 +59,6 @@ cp /home/centos/roboshop.shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 
 VALIDATE $? "copying roboshop config"
 
-systemctl start nginx  &>>$LOGFILE
+systemctl restart nginx  &>>$LOGFILE
 
-VALIDATE $? "starting Nginx"
+VALIDATE $? "restarting nginx"
