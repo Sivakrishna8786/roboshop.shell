@@ -43,7 +43,7 @@ useradd roboshop &>>$LOGFILE
 #write a condition to check directory already exist or not
 mkdir /app &>>$LOGFILE
 
-curl -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip &>>$LOGFILE
+curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>>$LOGFILE
 
 VALIDATE $? "downloading cart artifact"
 
@@ -60,13 +60,13 @@ npm install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
 # give full path of cart.service because we are inside /app
-cp /home/centos/roboshop.shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
+cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
 
 VALIDATE $? "copying cart.service"
 
 systemctl daemon-reload &>>$LOGFILE
 
-VALIDATE $? "daemon reload"  
+VALIDATE $? "daemon reload"
 
 systemctl enable cart &>>$LOGFILE
 
@@ -75,15 +75,3 @@ VALIDATE $? "Enabling cart"
 systemctl start cart &>>$LOGFILE
 
 VALIDATE $? "Starting cart"
-
-cp /home/centos/roboshop.shell/mongo.repo  /etc/yum.repos.d/mongo.repo &>>$LOGFILE
-
-VALIDATE $? "Copying mongo repo"
-
-yum install mongodb-org-shell -y &>>$LOGFILE
-
-VALIDATE $? "Installing mongo client"
-
-mongo --host mongodb.devopslearning.online </app/schema/cart.js &>>$LOGFILE
-
-VALIDATE $? "loading cart data into mongodb"
