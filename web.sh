@@ -35,7 +35,7 @@ systemctl enable nginx &>>$LOGFILE
 
 VALIDATE $? "Enabling Nginx"
 
-systemctl start nginx &>>$LOGFILE
+systemctl start nginx -1 &>>$LOGFILE
 
 VALIDATE $? "Starting Nginx"
 
@@ -59,6 +59,6 @@ cp /home/centos/roboshop.shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 
 VALIDATE $? "copying roboshop config"
 
-systemctl restart nginx -l  &>>$LOGFILE 
+systemctl restart nginx  &>>$LOGFILE 
 
 VALIDATE $? "Restarting Nginx"
