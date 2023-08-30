@@ -1,10 +1,10 @@
 #!/bin/bash
 
-NAMES=("workstation" "")
+NAMES=("workstation" "n")
 INSTANCE_TYPE=""
-IMAGE_ID=ami-03265a0778a880afb
-SECURITY_GROUP_ID=sg-0189d4870cc65fd55
-DOMAIN_NAME=joindevops.online
+IMAGE_ID=ami-081609eef2e3cc958
+SECURITY_GROUP_ID=sg-0b680dc8e455e994b
+DOMAIN_NAME=devopslearning.online
 
 # if mysql or mongodb instance_type should be t3.medium , for all others it is t2.micro
 
